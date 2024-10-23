@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: appcb-vs
+  namespace: cristian
+spec:
+  hosts:
+  - "*"  # Aceptar solicitudes de cualquier host
+  gateways:
+  - appcb-gateway  # El Gateway que se usará
+  http:
+  - match:
+    - uri:
+        prefix: /  # Coincidir cualquier URI que comience con /
+    route:
+    - destination:
+        host: appcb-service  # El servicio de destino
+        port:
+          number: 5000  # Puerto del servicio de destino

@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: appcb-gateway
+  namespace: cristian
+spec:
+  selector:
+    istio: ingressgateway  # Usa el gateway por defecto de Istio
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"  # Aceptar solicitudes de cualquier host
